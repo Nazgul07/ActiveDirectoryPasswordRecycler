@@ -16,6 +16,7 @@ namespace PasswordRecycler
         private PasswordChanger _adPasswordChanger;
         private string _domain;
 		private string _dn;
+        private object _previousSelection;
         public frmMain()
         {
             InitializeComponent();
@@ -108,13 +109,20 @@ namespace PasswordRecycler
 
         private void btnAddConnection_Click(object sender, EventArgs e)
         {
+            _previousSelection = comboConnections.SelectedItem;
             frmConnections connections = new frmConnections();
 			connections.FormClosed += (sender2, args) => {
-				comboConnections.Items.Clear();
+				//comboConnections.Items.Clear();
 				foreach (SettingsMap.SettingsMap map in Settings.Default.Connections.Clone())
 				{
 					comboConnections.Items.Add(map);
 				}
+                if (_previousSelection != null)
+                {
+                    SettingsMap.SettingsMap selectedMap = (SettingsMap.SettingsMap)_previousSelection;
+                    _domain = selectedMap.DomainController;
+                    _dn = selectedMap.BaseDN;
+                }
 			};
             connections.ShowDialog();
         }
