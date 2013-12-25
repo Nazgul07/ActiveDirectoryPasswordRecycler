@@ -22,7 +22,9 @@ namespace PasswordRecycler
 		{
 			InitializeComponent();
 			connectionsGrid.DataSource = Settings.Default.Connections.Clone();
-			connectionsGrid.Columns[1].Width = 178;
+			connectionsGrid.Columns[0].Width = 170;
+			connectionsGrid.Columns[1].Width = 170;
+			connectionsGrid.Columns[2].Width = 170;
 		}
 
 		private void btnSaveConnection_Click(object sender, EventArgs e)
