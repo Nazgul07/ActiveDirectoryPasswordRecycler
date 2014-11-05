@@ -28,107 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			this.connectionsGrid = new System.Windows.Forms.DataGridView();
-			this.btnSaveConnection = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
+			this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.connectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.domainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.connectionsGrid)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// connectionsGrid
 			// 
+			this.connectionsGrid.AutoGenerateColumns = false;
 			this.connectionsGrid.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.connectionsGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.connectionsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.connectionsGrid.Location = new System.Drawing.Point(1, 31);
-			this.connectionsGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.connectionsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.domainDataGridViewTextBoxColumn,
+            this.dNDataGridViewTextBoxColumn});
+			this.connectionsGrid.DataSource = this.connectionBindingSource;
+			this.connectionsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.connectionsGrid.Location = new System.Drawing.Point(0, 0);
 			this.connectionsGrid.Name = "connectionsGrid";
-			this.connectionsGrid.Size = new System.Drawing.Size(561, 145);
+			this.connectionsGrid.Size = new System.Drawing.Size(547, 172);
 			this.connectionsGrid.TabIndex = 0;
 			// 
-			// btnSaveConnection
+			// nameDataGridViewTextBoxColumn
 			// 
-			this.btnSaveConnection.Location = new System.Drawing.Point(448, 183);
-			this.btnSaveConnection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.btnSaveConnection.Name = "btnSaveConnection";
-			this.btnSaveConnection.Size = new System.Drawing.Size(100, 28);
-			this.btnSaveConnection.TabIndex = 1;
-			this.btnSaveConnection.Text = "Save";
-			this.btnSaveConnection.UseVisualStyleBackColor = true;
-			this.btnSaveConnection.Click += new System.EventHandler(this.btnSaveConnection_Click);
+			this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+			this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+			this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
 			// 
-			// label1
+			// connectionBindingSource
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(-3, 11);
-			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(65, 17);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "Example:";
+			this.connectionBindingSource.DataSource = typeof(SettingsMap.SettingsMap);
 			// 
-			// label2
+			// dNDataGridViewTextBoxColumn
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(216, 11);
-			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(159, 17);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "DC=mydomain,DC=local";
+			this.dNDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.dNDataGridViewTextBoxColumn.DataPropertyName = "BaseDN";
+			this.dNDataGridViewTextBoxColumn.HeaderText = "DN (eg: dc01.mydomain.local)";
+			this.dNDataGridViewTextBoxColumn.MinimumWidth = 180;
+			this.dNDataGridViewTextBoxColumn.Name = "dNDataGridViewTextBoxColumn";
+			this.dNDataGridViewTextBoxColumn.Width = 180;
 			// 
-			// label3
+			// domainDataGridViewTextBoxColumn
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(408, 11);
-			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(140, 17);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "dc01.mydomain.local";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(60, 11);
-			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(101, 17);
-			this.label4.TabIndex = 5;
-			this.label4.Text = "My Connection";
+			this.domainDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.domainDataGridViewTextBoxColumn.DataPropertyName = "DomainController";
+			this.domainDataGridViewTextBoxColumn.HeaderText = "Domain (eg: DC=mydomain,DC=local)";
+			this.domainDataGridViewTextBoxColumn.MinimumWidth = 220;
+			this.domainDataGridViewTextBoxColumn.Name = "domainDataGridViewTextBoxColumn";
 			// 
 			// frmConnections
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(556, 212);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.btnSaveConnection);
+			this.ClientSize = new System.Drawing.Size(547, 172);
 			this.Controls.Add(this.connectionsGrid);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(578, 261);
 			this.Name = "frmConnections";
 			this.Text = "LDAP Connections";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConnections_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.connectionsGrid)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView connectionsGrid;
-        private System.Windows.Forms.Button btnSaveConnection;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.DataGridView connectionsGrid;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+		private System.Windows.Forms.BindingSource connectionBindingSource;
+		private System.Windows.Forms.DataGridViewTextBoxColumn domainDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dNDataGridViewTextBoxColumn;
     }
 }

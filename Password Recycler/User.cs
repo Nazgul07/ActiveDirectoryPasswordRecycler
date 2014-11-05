@@ -27,8 +27,9 @@ namespace PasswordRecycler
 
 		public virtual void Connect()
 		{
-			PrincipalContext adPrincipalContext = new PrincipalContext(ContextType.Domain, Domain, DN, Username, Password);
+			PrincipalContext adPrincipalContext = new PrincipalContext(ContextType.Domain, Domain, DN, ContextOptions.Negotiate, Username, Password);
 			_directoryUser = UserPrincipal.FindByIdentity(adPrincipalContext, Username);
+			if (_directoryUser == null) throw new Exception("User not found in Active Directory");
 		}
 
 		public virtual void ChangePassword(string newPassword)

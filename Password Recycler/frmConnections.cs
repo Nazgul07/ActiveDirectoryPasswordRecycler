@@ -21,28 +21,22 @@ namespace PasswordRecycler
 		public frmConnections()
 		{
 			InitializeComponent();
-			connectionsGrid.DataSource = Settings.Default.Connections.Clone();
-			connectionsGrid.Columns[0].Width = 170;
-			connectionsGrid.Columns[1].Width = 170;
-			connectionsGrid.Columns[2].Width = 170;
-		}
-
-		private void btnSaveConnection_Click(object sender, EventArgs e)
-		{
-			Settings.Default.Connections = (SettingsMapCollection)connectionsGrid.DataSource;
-			ArrayList list = new ArrayList();
 			foreach (SettingsMap.SettingsMap map in Settings.Default.Connections)
 			{
-				if (map.BaseDN == null && map.Name == null && map.DomainController == null)
-					list.Add(map);
+				connectionBindingSource.Add(map);
 			}
-			foreach (SettingsMap.SettingsMap map in list)
-				Settings.Default.Connections.Remove(map);
-			Settings.Default.Save();
-			this.Close();
 		}
 
-
+		private void frmConnections_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			Settings.Default.Connections.Clear();
+			Settings.Default.Save();
+			foreach (SettingsMap.SettingsMap map in connectionBindingSource)
+			{
+				Settings.Default.Connections.Add(map);
+			}
+			Settings.Default.Save();
+		}
 	}
 
 }
