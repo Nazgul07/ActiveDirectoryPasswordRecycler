@@ -110,12 +110,15 @@ namespace PasswordRecycler
 			connections.FormClosed += (sender2, args) =>
 			{
 				comboConnections.Items.Clear();
-				comboConnections.Items.AddRange(Settings.Default.Connections.ToArray());
-				if (_previousSelection != null)
+				if (Settings.Default.Connections.Count > 0)
 				{
-					SettingsMap.SettingsMap selectedMap = (SettingsMap.SettingsMap)_previousSelection;
-					_domain = selectedMap.DomainController;
-					_dn = selectedMap.BaseDN;
+					comboConnections.Items.AddRange(Settings.Default.Connections.ToArray());
+					if (_previousSelection != null)
+					{
+						SettingsMap.SettingsMap selectedMap = (SettingsMap.SettingsMap)_previousSelection;
+						_domain = selectedMap.DomainController;
+						_dn = selectedMap.BaseDN;
+					}
 				}
 			};
 			connections.ShowDialog();

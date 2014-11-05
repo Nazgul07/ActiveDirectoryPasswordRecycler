@@ -30,7 +30,9 @@ namespace PasswordRecycler.Properties {
             "\n          </ArrayOfSettingsMap>\r\n        ")]
         public global::SettingsMap.SettingsMapCollection Connections {
             get {
-                return ((global::SettingsMap.SettingsMapCollection)(this["Connections"]));
+				global::SettingsMap.SettingsMapCollection maps = ((global::SettingsMap.SettingsMapCollection)(this["Connections"]));
+				if (maps.Count == 1 && maps[0].Name == null) maps.Clear();
+                return maps;
             }
             set {
                 this["Connections"] = value;

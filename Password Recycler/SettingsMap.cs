@@ -22,13 +22,16 @@ namespace SettingsMap
         {
             SettingsMapCollection result = new SettingsMapCollection();
 
-            foreach (SettingsMap map in this)
-                result.Add(new SettingsMap()
-                {
-                    Name = map.Name,
-                    BaseDN = map.BaseDN,
-                    DomainController = map.DomainController
-                });
+			foreach (SettingsMap map in this)
+			{
+				if (map.Name != null)
+				result.Add(new SettingsMap()
+				{
+					Name = map.Name,
+					BaseDN = map.BaseDN,
+					DomainController = map.DomainController
+				});
+			}
             return result;
         }
     }
