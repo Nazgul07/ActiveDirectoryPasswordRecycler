@@ -19,8 +19,10 @@ namespace PasswordRecycler
 		private object _previousSelection;
 		public frmMain()
 		{
-			InitializeComponent();
+			InitializeComponent(); 
+			comboConnections.Items.Add(new SettingsMap.SettingsMap() { Name = "Current Domain" });
 			comboConnections.Items.AddRange(Settings.Default.Connections.ToArray());
+			comboConnections.SelectedIndex = 0;
 			MessageBox.Show("WARNING: Please close all running applications before use.\n\n"
 				+ "Any Application that has an open connection to your Active Directory "
 				+ "(eg: OfficeCommunicator/Lync, Outlook, Browser, etc) can cause you to get locked out of your account."
@@ -110,15 +112,14 @@ namespace PasswordRecycler
 			connections.FormClosed += (sender2, args) =>
 			{
 				comboConnections.Items.Clear();
-				if (Settings.Default.Connections.Count > 0)
+				comboConnections.Items.Add(new SettingsMap.SettingsMap() { Name = "Current Domain" });
+				comboConnections.Items.AddRange(Settings.Default.Connections.ToArray());
+				comboConnections.SelectedIndex = 0;
+				if (_previousSelection != null)
 				{
-					comboConnections.Items.AddRange(Settings.Default.Connections.ToArray());
-					if (_previousSelection != null)
-					{
-						SettingsMap.SettingsMap selectedMap = (SettingsMap.SettingsMap)_previousSelection;
-						_domain = selectedMap.DomainController;
-						_dn = selectedMap.BaseDN;
-					}
+					SettingsMap.SettingsMap selectedMap = (SettingsMap.SettingsMap)_previousSelection;
+					_domain = selectedMap.DomainController;
+					_dn = selectedMap.BaseDN;
 				}
 			};
 			connections.ShowDialog();
