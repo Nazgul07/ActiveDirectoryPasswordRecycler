@@ -30,10 +30,10 @@
         {
 			this.components = new System.ComponentModel.Container();
 			this.connectionsGrid = new System.Windows.Forms.DataGridView();
-			this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.connectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.dNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.domainDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.connectionsGrid)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.connectionBindingSource)).BeginInit();
 			this.SuspendLayout();
@@ -55,32 +55,32 @@
 			this.connectionsGrid.Size = new System.Drawing.Size(547, 172);
 			this.connectionsGrid.TabIndex = 0;
 			// 
+			// connectionBindingSource
+			// 
+			this.connectionBindingSource.DataSource = typeof(SettingsMap.SettingsMap);
+			// 
 			// nameDataGridViewTextBoxColumn
 			// 
 			this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
 			this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
 			this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
 			// 
-			// connectionBindingSource
+			// domainDataGridViewTextBoxColumn
 			// 
-			this.connectionBindingSource.DataSource = typeof(SettingsMap.SettingsMap);
+			this.domainDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.domainDataGridViewTextBoxColumn.DataPropertyName = "DomainController";
+			this.domainDataGridViewTextBoxColumn.HeaderText = "Domain (eg: dc01.mydomain.local)";
+			this.domainDataGridViewTextBoxColumn.MinimumWidth = 200;
+			this.domainDataGridViewTextBoxColumn.Name = "domainDataGridViewTextBoxColumn";
+			this.domainDataGridViewTextBoxColumn.Width = 200;
 			// 
 			// dNDataGridViewTextBoxColumn
 			// 
-			this.dNDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+			this.dNDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.dNDataGridViewTextBoxColumn.DataPropertyName = "BaseDN";
-			this.dNDataGridViewTextBoxColumn.HeaderText = "DN (eg: dc01.mydomain.local)";
-			this.dNDataGridViewTextBoxColumn.MinimumWidth = 180;
+			this.dNDataGridViewTextBoxColumn.HeaderText = "DN (eg: DC=mydomain,DC=local)";
+			this.dNDataGridViewTextBoxColumn.MinimumWidth = 200;
 			this.dNDataGridViewTextBoxColumn.Name = "dNDataGridViewTextBoxColumn";
-			this.dNDataGridViewTextBoxColumn.Width = 180;
-			// 
-			// domainDataGridViewTextBoxColumn
-			// 
-			this.domainDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.domainDataGridViewTextBoxColumn.DataPropertyName = "DomainController";
-			this.domainDataGridViewTextBoxColumn.HeaderText = "Domain (eg: DC=mydomain,DC=local)";
-			this.domainDataGridViewTextBoxColumn.MinimumWidth = 220;
-			this.domainDataGridViewTextBoxColumn.Name = "domainDataGridViewTextBoxColumn";
 			// 
 			// frmConnections
 			// 
@@ -102,8 +102,8 @@
         #endregion
 
 		private System.Windows.Forms.DataGridView connectionsGrid;
-		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
 		private System.Windows.Forms.BindingSource connectionBindingSource;
+		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn domainDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dNDataGridViewTextBoxColumn;
     }
