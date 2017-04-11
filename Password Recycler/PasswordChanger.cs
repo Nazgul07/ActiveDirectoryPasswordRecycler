@@ -81,6 +81,7 @@ namespace PasswordRecycler
 				{
 					for (int i = Start; i <= Iterations + Start - 1; i++)
 					{
+						_user.Connect();
 						_user.ChangePassword(_user.NewPassword + "*" + i.ToString());
 						System.Threading.Thread.Sleep(2000);//just to ensure the change has enough time on the server (I had problems without this once).
 						_updateStatus("Iteration " + i.ToString() + " of " + Iterations + " (*" + i.ToString() + ")", 100 / Iterations);
